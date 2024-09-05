@@ -38,7 +38,9 @@ const server = app.listen(PORT, () => {
 
 //     res.sendFile(path.resolve(pathToBuild,"index.html"));
 // })
-
+app.get("/health", (req, res) => {
+  res.json({ message: "hey buddy your server is complete" });
+});
 app.use(express.static(path.join(__dirname, "../frontend/build")));
 
 app.get("*", (req, res) => {
