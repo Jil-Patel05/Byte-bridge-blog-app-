@@ -30,22 +30,12 @@ const server = app.listen(PORT, () => {
   console.log(`Server running on port  ${PORT} : ${process.env.NODE_ENV}`);
 });
 
-// const pathToBuild=path.resolve(__dirname, "../frontend/build")
+const pathToBuild = path.resolve(__dirname, "../frontend/build");
 
-// app.use(express.static(pathToBuild));
-
-// app.get("*",(req,res) => {
-
-//     res.sendFile(path.resolve(pathToBuild,"index.html"));
-// })
-app.get("/health", (req, res) => {
-  res.json({ message: "hey buddy your server is complete" });
-});
-app.use(express.static(path.join(__dirname, "../frontend/build")));
+app.use(express.static(pathToBuild));
 
 app.get("*", (req, res) => {
-  console.log("dir "+__dirname)
-  res.sendFile(path.join(__dirname, "../frontend/build/index.html"));
+  res.sendFile(path.resolve(pathToBuild, "index.html"));
 });
 
 process.on("unhandledRejection", (err, promise) => {
