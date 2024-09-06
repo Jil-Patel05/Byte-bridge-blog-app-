@@ -25,9 +25,12 @@ const sendEmail = async (mailOptions) => {
   //     }
   //   });
   // });
-
-  let info = await transporter.sendMail(mailOptions);
-
+  try {
+    let info = await transporter.sendMail(mailOptions);
+  } catch (error) {
+    console.log("error aa gy he re");
+    console.log(error);
+  }
   console.log(`Message send :${info}`);
 };
 
