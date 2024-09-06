@@ -2,6 +2,7 @@ const nodemailer = require("nodemailer");
 require("dotenv").config();
 
 const sendEmail = async (mailOptions) => {
+  console.log("function called ho gaya");
   const { SMTP_HOST, SMTP_PORT, EMAIL_USERNAME, EMAIL_PASS } = process.env;
 
   let transporter = nodemailer.createTransport({
