@@ -73,7 +73,7 @@ const forgotpassword = asyncErrorWrapper(async (req, res, next) => {
     `;
 
   try {
-    await sendEmail({
+    sendEmail({
       from: EMAIL_USERNAME,
       to: resetEmail,
       subject: " ✔ Reset Your Password  ✔",

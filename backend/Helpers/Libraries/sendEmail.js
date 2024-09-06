@@ -15,8 +15,13 @@ const sendEmail = async (mailOptions) => {
     secure: true,
   });
 
-  let info = await transporter.sendMail(mailOptions);
-
+  let info;
+  try {
+    info = await transporter.sendMail(mailOptions);
+    console.log('Email sent: ' + info.response)
+  } catch (error) {
+    console.error('Error sending email: ', error)
+  }
   console.log(`Message send : ${info.messageId}`);
 };
 
