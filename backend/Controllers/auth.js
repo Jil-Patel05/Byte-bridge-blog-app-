@@ -73,13 +73,14 @@ const forgotpassword = asyncErrorWrapper(async (req, res, next) => {
     `;
 
   try {
+    console.log(emailTemplate);
     sendEmail({
       from: EMAIL_USERNAME,
       to: resetEmail,
       subject: " ✔ Reset Your Password  ✔",
       html: emailTemplate,
     });
-
+    console.log("bhia kam kr na");
     return res.status(200).json({
       success: true,
       message: "Email Send",
