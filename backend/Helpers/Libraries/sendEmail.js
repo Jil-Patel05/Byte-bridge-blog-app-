@@ -15,14 +15,19 @@ const sendEmail = async (mailOptions) => {
     secure: true,
   });
 
-  let info;
-  try {
-    info = await transporter.sendMail(mailOptions);
-    console.log('Email sent: ' + info.response)
-  } catch (error) {
-    console.error('Error sending email: ', error)
-  }
-  console.log(`Message send : ${info.messageId}`);
+  return await new Promise((resolve, reject) => {
+    transporter.sendMail(mailOptions, (err, info) => {
+      if (err) {
+        reject(err);
+      } else {
+        resolve(info);
+      }
+    });
+  });
+
+  // let info = await transporter.sendMail(mailOptions);
+
+  console.log(`Message send :`);
 };
 
 module.exports = sendEmail;
