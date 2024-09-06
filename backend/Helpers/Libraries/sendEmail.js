@@ -15,20 +15,20 @@ const sendEmail = async (mailOptions) => {
     secure: true,
   });
 
-  return await new Promise((resolve, reject) => {
-    transporter.sendMail(mailOptions, (err, info) => {
-      if (err) {
-        reject(err);
-      } else {
-        console.log("resolved bhai resolved");
-        resolve(info);
-      }
-    });
-  });
+  // return await new Promise((resolve, reject) => {
+  //   transporter.sendMail(mailOptions, (err, info) => {
+  //     if (err) {
+  //       reject(err);
+  //     } else {
+  //       console.log("resolved bhai resolved");
+  //       resolve(info);
+  //     }
+  //   });
+  // });
 
-  // let info = await transporter.sendMail(mailOptions);
+  let info = await transporter.sendMail(mailOptions);
 
-  console.log(`Message send :`);
+  console.log(`Message send :${info}`);
 };
 
 module.exports = sendEmail;
