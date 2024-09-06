@@ -20,6 +20,7 @@ const sendEmail = async (mailOptions) => {
       if (err) {
         reject(err);
       } else {
+        console.log("resolved bhai resolved");
         resolve(info);
       }
     });
