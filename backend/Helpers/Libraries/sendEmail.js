@@ -15,7 +15,7 @@ const sendEmail = async (mailOptions) => {
     tls: { rejectUnauthorized: false },
     secure: true,
   });
-
+  console.log(transporter);
   // return await new Promise((resolve, reject) => {
   //   transporter.sendMail(mailOptions, (err, info) => {
   //     if (err) {
