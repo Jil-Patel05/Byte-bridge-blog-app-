@@ -8,12 +8,12 @@ const sendEmail = async (mailOptions) => {
   let transporter = nodemailer.createTransport({
     host: SMTP_HOST,
     port: SMTP_PORT,
+    secure: true,
     auth: {
       user: EMAIL_USERNAME,
       pass: EMAIL_PASS,
     },
-    tls: { rejectUnauthorized: false },
-    secure: true,
+    tls: { ciphers: "SSLv3" },
   });
   // return await new Promise((resolve, reject) => {
   //   transporter.sendMail(mailOptions, (err, info) => {
@@ -28,6 +28,7 @@ const sendEmail = async (mailOptions) => {
   console.log("currently above this code");
   try {
     let info = await transporter.sendMail(mailOptions);
+    console.log("executed mail sent to catt");
   } catch (error) {
     console.log("error aa gy he re");
     console.log(error);
